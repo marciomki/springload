@@ -11,17 +11,17 @@ const Form = () => {
     const showArea = watch('animal');
     return (
         <div className={'container-fluid'}>
-           <form onSubmit={handleSubmit(onSubmit)} className={'d-flex text-left col-4 flex-column m-auto'}>
-                <label>Email</label>
-                <input {...register('email', { required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i}})}  type='email' placeholder="marcio@springload.com"/>
+           <form onSubmit={handleSubmit(onSubmit)} className={'d-flex text-left col-md-8 col-lg-4 col-12 flex-column m-auto pb-5'}>
+                <label className={styles.label}>Email</label>
+                <input className={styles.input} {...register('email', { required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i}})}  type='email' placeholder="marcio@springload.com"/>
                 {errors.email && <span className={styles.validationMsg}>Email is invalid</span>}
                 <br />
-                <label>Password</label>
-                <input {...register('password', { required: true, minLength: 8 })} type='password' placeholder="minimum of 8 characters" />
+                <label className={styles.label}>Password</label>
+                <input className={styles.input} {...register('password', { required: true, minLength: 8 })} type='password' placeholder="minimum of 8 characters" />
                 {errors.password && <span className={styles.validationMsg}>Password requires minimum of 8 characters</span>}
                 <br />
-                <label>Colour</label>
-                <select {...register('colour')}>
+                <label className={styles.label}>Colour</label>
+                <select className={styles.input} {...register('colour')}>
                     <option value="null" defaultValue>Select Colour</option>
                     <option value="blue" >Blue</option>
                     <option value="green">Green</option>
@@ -30,8 +30,8 @@ const Form = () => {
                     <option value="brown">Brown</option>
                 </select>
                 <br/>
-                <label>Animals</label>
-                <select {...register('animal')} >
+                <label className={styles.label}>Animals</label>
+                <select className={styles.input} {...register('animal')} >
                     <option value="null" defaultValue>Select Animal</option>
                     <option value="bear">Bear</option>
                     <option value="tiger">Tiger</option>
@@ -41,14 +41,14 @@ const Form = () => {
                 {showArea == 'tiger' && 
                     <span>
                         <br/>
-                        <label>Type of tiger</label><br/>
-                        <textarea {...register('tigertype', { required: true})} className={"w-100"} />
+                        <label className={styles.label}>Type of tiger</label><br/>
+                        <textarea {...register('tigertype', { required: true})} className={styles.input} />
                     </span>
                 }
                 {errors.tigertype && <span className={styles.validationMsg}>Tiger type is required</span>}
                 
                 <br/><br/>
-                <input className='submitButton' type='submit' value='Done' />
+                <input className={styles.submitButton} type='submit' value='Done' />
             </form> 
         </div>
     )
