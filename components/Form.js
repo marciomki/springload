@@ -5,12 +5,18 @@ import { useForm } from "react-hook-form";
 import styles from '../styles/Home.module.scss'
 
 const Form = () => {
+    const [message, setMessage] = useState(null);
     const { register, watch, handleSubmit, formState:{ errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => { 
+        return(
+            setMessage('Thank you ' + data.email)
+        )
+    };
 
     const showArea = watch('animal');
     return (
         <div className={'container-fluid'}>
+            {message}
            <form onSubmit={handleSubmit(onSubmit)} className={'d-flex text-left col-md-8 col-lg-4 col-12 flex-column m-auto pb-5'}>
                 <label className={styles.label}>Email</label>
                 <input className={styles.input} {...register('email', { required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i}})}  type='email' placeholder="marcio@springload.com"/>
