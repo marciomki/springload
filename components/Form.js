@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { useState } from 'react';
-import ModalError from './modal/modalError.js'
 import { useForm } from "react-hook-form";
 import styles from '../styles/Home.module.scss'
 
@@ -9,6 +8,7 @@ const Form = () => {
     const { register, watch, handleSubmit, formState:{ errors } } = useForm();
     const onSubmit = data => console.log(data);
 
+    const showArea = watch('animal');
     return (
         <div className={'container-fluid'}>
            <form onSubmit={handleSubmit(onSubmit)} className={'d-flex text-left col-4 flex-column m-auto'}>
@@ -38,11 +38,13 @@ const Form = () => {
                     <option value="snake">Red</option>
                     <option value="donkey">Black</option>
                 </select>
+                {showArea == 'tiger' && 
                     <span>
                         <br/>
                         <label>Type of tiger</label><br/>
                         <textarea {...register('tigertype', { required: true})} className={"w-100"} />
                     </span>
+                }
                 {errors.tigertype && <span className={styles.validationMsg}>Tiger type is required</span>}
                 
                 <br/><br/>
