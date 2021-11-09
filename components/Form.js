@@ -6,17 +6,21 @@ import styles from '../styles/Home.module.scss'
 
 const Form = () => {
     const [message, setMessage] = useState(null);
+    const [submitted, setSubmitted] = useState(false);
     const { register, watch, handleSubmit, formState:{ errors } } = useForm();
     const onSubmit = data => { 
         return(
-            setMessage('Thank you ' + data.email)
+            setSubmitted(true), 
+            setMessage('Thank you for submitting the form, ' + data.email)
         )
     };
-
     const showArea = watch('animal');
     return (
         <div className={'container-fluid'}>
-            {message}
+           {submitted ? 
+           <div className={'d-flex text-center col-md-8 col-lg-4 col-12 flex-column m-auto pb-5'}><h4>{message}</h4></div> 
+           
+           :
            <form onSubmit={handleSubmit(onSubmit)} className={'d-flex text-left col-md-8 col-lg-4 col-12 flex-column m-auto pb-5'}>
                 <label className={styles.label}>Email</label>
                 <input className={styles.input} {...register('email', { required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i}})}  type='email' placeholder="marcio@springload.com"/>
@@ -56,6 +60,7 @@ const Form = () => {
                 <br/><br/>
                 <input className={styles.submitButton} type='submit' value='Done' />
             </form> 
+            }
         </div>
     )
 }
