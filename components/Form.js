@@ -14,9 +14,11 @@ const Form = () => {
            <form onSubmit={handleSubmit(onSubmit)} className={'d-flex text-left col-4 flex-column m-auto'}>
                 <label>Email</label>
                 <input {...register('email', { required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i}})}  type='email' placeholder="marcio@springload.com"/>
+                {errors.email && <span className={styles.validationMsg}>Email is invalid</span>}
                 <br />
                 <label>Password</label>
                 <input {...register('password', { required: true, minLength: 8 })} type='password' placeholder="minimum of 8 characters" />
+                {errors.password && <span className={styles.validationMsg}>Password requires minimum of 8 characters</span>}
                 <br />
                 <label>Colour</label>
                 <select {...register('colour')}>
@@ -41,6 +43,7 @@ const Form = () => {
                         <label>Type of tiger</label><br/>
                         <textarea {...register('tigertype', { required: true})} className={"w-100"} />
                     </span>
+                {errors.tigertype && <span className={styles.validationMsg}>Tiger type is required</span>}
                 
                 <br/><br/>
                 <input className='submitButton' type='submit' value='Done' />
