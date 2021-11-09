@@ -11,7 +11,7 @@ const Form = () => {
     const onSubmit = data => { 
         return(
             setSubmitted(true), 
-            setMessage('Thank you for submitting the form, ' + data.email)
+            setMessage('Thank you for submitting the form, g' + data.email)
         )
     };
     const showArea = watch('animal');
@@ -45,8 +45,8 @@ const Form = () => {
                     <option value="null" defaultValue>Select Animal</option>
                     <option value="bear">Bear</option>
                     <option value="tiger">Tiger</option>
-                    <option value="snake">Red</option>
-                    <option value="donkey">Black</option>
+                    <option value="snake">Snake</option>
+                    <option value="donkey">Donkey</option>
                 </select>
                 {showArea == 'tiger' && 
                     <span>
