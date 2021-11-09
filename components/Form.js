@@ -27,7 +27,7 @@ const Form = () => {
                 {errors.email && <span className={styles.validationMsg}>Email is invalid</span>}
                 <br />
                 <label className={styles.label}>Password</label>
-                <input className={styles.input} {...register('password', { required: true, minLength: 8 })} type='password' placeholder="minimum of 8 characters" />
+                <input className={styles.input} {...register('password', { required: true, minLength: 8 })} type='password' placeholder="Minimum of 8 characters" />
                 {errors.password && <span className={styles.validationMsg}>Password requires minimum of 8 characters</span>}
                 <br />
                 <label className={styles.label}>Colour</label>
